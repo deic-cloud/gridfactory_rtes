@@ -1,0 +1,4 @@
+#!/bin/sh
+# pywake_aep layout.csv report.txt wakemap.png - runs pywake_aep.py in the package's venv.
+here=$(dirname "$(readlink -f "$0")")
+exec "$here/../venv/bin/python" "$here/pywake_aep.py" "$@"

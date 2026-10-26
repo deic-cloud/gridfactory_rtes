@@ -1,0 +1,18 @@
+#!/bin/bash
+# PyWake 2.6.20 (DTU Wind, MIT) in its own Python virtual environment. pip is
+# bootstrapped from a pinned, SHA-256-checked wheel (worker images need not
+# have pip); PyWake itself is pinned to 2.6.20, its dependencies come from PyPI.
+# Runs once per worker, in the package directory.
+set -e
+cd "%BASEDIR%"
+PIP_WHL=pip-26.2.2-py3-none-any.whl
+PIP_URL=https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/$PIP_WHL
+PIP_SHA256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70
+curl -sSfL --max-time 600 -o "$PIP_WHL" "$PIP_URL"
+echo "$PIP_SHA256  $PIP_WHL" | sha256sum -c --quiet
+python3 -m venv --without-pip venv
+venv/bin/python "$PIP_WHL/pip" install --quiet --no-cache-dir "$PIP_WHL"
+rm -f "$PIP_WHL"
+venv/bin/pip install --quiet --no-cache-dir "py_wake==2.6.20" matplotlib
+chmod -R a+rX venv bin
+chmod 755 bin/pywake_aep

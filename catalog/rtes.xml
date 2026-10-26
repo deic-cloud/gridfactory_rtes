@@ -812,4 +812,29 @@
   <basesystem>100</basesystem>
 </TarPackage>
 
+<MetaPackage>
+  <id>10092</id>
+  <description>FastQC 0.12.1 - quality control reports for high-throughput sequencing data (FASTQ, BAM, SAM)</description>
+  <name>APPS/BIO/FastQC-0.12.1</name>
+  <instance>20066</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20066</id>
+  <url>https://sciencedata.dk/public/rtes/fastqc-0.12.1.tar.gz</url>
+  <depends>UTIL/Perl</depends>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10093</id>
+  <description>PyWake 2.6.20 - wind farm simulation (annual energy production, wake effects) from DTU Wind</description>
+  <name>APPS/WIND/PyWake-2.6.20</name>
+  <instance>20067</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20067</id>
+  <url>https://sciencedata.dk/public/rtes/pywake-2.6.20.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
 </RTECatalog>
