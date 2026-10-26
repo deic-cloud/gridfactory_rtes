@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case "$1" in
+	0)
+		#none
+	;;
+
+	1)
+		source /cvmfs/sft.cern.ch/lcg/external/gcc/4.3.2/i686-slc5-gcc43-opt/setup.sh ""
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/cvmfs/sft.cern.ch/lcg/external/ROOT/5.28.00/slc4_ia32_gcc34/root/lib
+		export PATH=$PATH:/cvmfs/sft.cern.ch/lcg/external/ROOT/5.28.00/slc4_ia32_gcc34/root/bin
+	;;
+
+	2)
+		#none
+	;;
+
+	*)
+		return 1
+	;;
+esac	
+
+# eof

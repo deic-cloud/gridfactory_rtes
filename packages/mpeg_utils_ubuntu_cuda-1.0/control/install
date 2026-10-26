@@ -1,0 +1,9 @@
+#!/bin/bash
+
+apt update
+apt install -y vlc python3-filetype python3-pymediainfo ffmpeg
+
+# cuda-enabled ffmpeg is installed in /root/ffmpeg
+
+cp -r /root/ffmpeg /home/gridfactory/
+chown -R gridfactory:gridfactory /home/gridfactory/ffmpeg

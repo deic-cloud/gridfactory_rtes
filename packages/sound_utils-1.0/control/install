@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# First add the DAG YUM repository
+wget http://dag.wieers.com/rpm/packages/rpmforge-release/rpmforge-release-0.3.6-1.el5.rf.i386.rpm
+rpm -ivh rpmforge-release-0.3.6-1.el5.rf.i386.rpm
+
+# This is a Redhat-like system, just use yum and rpm to install flac and lame
+yum -y install lame
+yum -y install flac
+
+chmod +x %BASEDIR%/bin/flac2mp3

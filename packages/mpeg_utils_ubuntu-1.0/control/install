@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# This is a debian-like system, just use apt to install vlc
+apt update
+apt -y install vlc ffmpeg python3-filetype python3-pymediainfo
+chmod +x %BASEDIR%/bin/vlc_as_nobody

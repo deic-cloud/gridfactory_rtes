@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case "$1" in
+	0)
+		#none
+	;;
+
+	1)
+		PATH=%BASEDIR%/bin::~/.local/bin:~/ffmpeg:$PATH
+		export PATH
+		LD_LIBRARY_PATH=%BASEDIR%/lib:~/.local/lib:~/ffmpeg/libavcodec:~/ffmpeg/libavdevice:~/ffmpeg/libavfilter:~/ffmpeg/libavformat:~/ffmpeg/libavutil:~/ffmpeg/libswresample:~/ffmpeg/libswscale:$LD_LIBRARY_PATH
+		export LD_LIBRARY_PATH
+	;;
+
+	2)
+		#none
+	;;
+
+	*)
+		return 1
+	;;
+esac	
+
+# eof

@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rtes.xsl"?>
+
+<RTECatalog>
+
+<BaseSystem>
+  <id>100</id>
+  <distribution>Generic</distribution>
+  <name>Linux</name>
+  <description>This can be any Linux system</description>
+</BaseSystem>
+
+<BaseSystem>
+  <id>101</id>
+  <distribution>Generic</distribution>
+  <name>Windows</name>
+  <description>Windows NT/2000/XP</description>
+</BaseSystem>
+
+<BaseSystem>
+  <id>102</id>
+  <distribution>CentOS</distribution>
+  <name>CentOS-5</name>
+  <description>CentOS-5 Linux</description>
+  <provides>Linux</provides>
+</BaseSystem>
+
+<BaseSystem>
+  <id>103</id>
+  <distribution>Generic</distribution>
+  <name>Mac OS X</name>
+  <description>Mac OS X</description>
+</BaseSystem>
+
+<BaseSystem>
+  <id>104</id>
+  <distribution>CernVM</distribution>
+  <name>CernVM</name>
+  <provides>Linux</provides>
+  <description>CernVM Linux</description>
+</BaseSystem>
+
+<BaseSystem>
+  <id>106</id>
+  <distribution>Ubuntu</distribution>
+  <name>Ubuntu-22.04</name>
+  <provides>Linux</provides>
+  <command>lsb_release -d | grep Ubuntu | grep 22.04</command>
+  <description>Ubuntu Jammy</description>
+</BaseSystem>
+
+<BaseSystem>
+  <id>107</id>
+  <distribution>Ubuntu</distribution>
+  <name>Ubuntu</name>
+  <provides>Linux</provides>
+  <command>lsb_release -i | grep Ubuntu</command>
+  <description>Any Ubuntu</description>
+</BaseSystem>
+
+<MetaPackage>
+  <id>105</id>
+  <description>The CVMFS file system</description>
+  <name>SYSTEM/CVMFS</name>
+  <command>ls /cvmfs</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10032</id>
+  <lastupdated>2006-11-29</lastupdated>
+  <description>VirtualBox virtual machine engine</description>
+  <name>VM/VirtualBox-1.5</name>
+  <registrykey>HKLM\SOFTWARE\innotek\VirtualBox:installdir</registrykey>
+  <provides>VM/VirtualBox</provides>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10047</id>
+  <lastupdated>2009-06-05</lastupdated>
+  <description>VirtualBox virtual machine engine</description>
+  <name>VM/VirtualBox-2</name>
+  <registrykey>HKLM\SOFTWARE\Sun\xVM VirtualBox:installdir</registrykey>
+  <provides>VM/VirtualBox</provides>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10053</id>
+  <lastupdated>2009-06-05</lastupdated>
+  <description>VirtualBox virtual machine engine</description>
+  <name>VM/VirtualBox-3</name>
+  <registrykey>HKLM\SOFTWARE\Sun\VirtualBox:InstallDir</registrykey>
+  <command>VBoxManage -version | grep '^3.'</command>
+  <provides>VM/VirtualBox</provides>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10068</id>
+  <lastupdated>2009-06-05</lastupdated>
+  <description>VirtualBox virtual machine engine</description>
+  <name>VM/VirtualBox-3.1</name>
+  <registrykey>HKLM\SOFTWARE\Sun\VirtualBox:InstallDir</registrykey>
+  <command>VBoxManage -version | grep '^3.1'</command>
+  <provides>VM/VirtualBox</provides>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10074</id>
+  <lastupdated>2010-18-09</lastupdated>
+  <description>VirtualBox virtual machine engine</description>
+  <name>VM/VirtualBox-3.2</name>
+  <registrykey>HKLM\SOFTWARE\Oracle\VirtualBox:InstallDir</registrykey>
+  <command>VBoxManage -version | grep '^3.[23456789]'</command>
+  <provides>VM/VirtualBox</provides>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10054</id>
+  <lastupdated>2009-06-05</lastupdated>
+  <description>VirtualBox virtual machine engine</description>
+  <name>VM/VirtualBox-any</name>
+  <command>VBoxManage</command>
+  <provides>VM/VirtualBox</provides>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10033</id>
+  <lastupdated>2006-11-29</lastupdated>
+  <description>QEMU kernel module</description>
+  <name>VM/KQEMU</name>
+  <registrykey>HKEY_LOCAL_MACHINE\SYSTEM\CurrentcontrolSet\Services\kqemu:ImagePath</registrykey>
+  <command>/sbin/modprobe kqemu</command>
+  <instance>20015</instance>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10064</id>
+  <lastupdated>2010-05-18</lastupdated>
+  <description>KVM kernel module</description>
+  <name>VM/KVM_REDHAT</name>
+  <command>ls /usr/libexec/qemu-kvm</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10065</id>
+  <lastupdated>2010-05-18</lastupdated>
+  <description>KVM kernel module</description>
+  <name>VM/KVM_UBUNTU</name>
+  <command>which kvm</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10066</id>
+  <lastupdated>2024-03-19</lastupdated>
+  <description>Nvidia CUDA support</description>
+  <name>SYSTEM/CUDA</name>
+  <command>nvidia-smi -L</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10055</id>
+  <name>APPS/HEP/ATLAS-15.6.1</name>
+  <instance>20034</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20034</id>
+  <depends>VM/Linux/CERNVM-2.1.0</depends>
+  <basesystem>104</basesystem>
+  <url>https://sciencedata.dk/public/rtes/atlas-15.6.1.tar.gz</url>
+</TarPackage>
+
+<MetaPackage>
+  <id>10058</id>
+  <name>APPS/HEP/ATLAS-15.6.4</name>
+  <instance>20038</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20038</id>
+  <depends>VM/Linux/CERNVM-2.1.0</depends>
+  <basesystem>104</basesystem>
+  <url>https://sciencedata.dk/public/rtes/atlas-15.6.4.tar.gz</url>
+</TarPackage>
+
+<MetaPackage>
+  <id>10059</id>
+  <name>APPS/HEP/ATLAS-15.6.5</name>
+  <instance>20039</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20039</id>
+  <depends>VM/Linux/CERNVM-2.1.0</depends>
+  <basesystem>104</basesystem>
+  <url>https://sciencedata.dk/public/rtes/atlas-15.6.5.tar.gz</url>
+</TarPackage>
+
+<MetaPackage>
+  <id>10069</id>
+  <name>APPS/HEP/ATLAS-15.6.9</name>
+  <instance>20051</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20051</id>
+  <depends>VM/Linux/CERNVM-2.1.0</depends>
+  <basesystem>104</basesystem>
+  <url>https://sciencedata.dk/public/rtes/atlas-15.6.9.tar.gz</url>
+</TarPackage>
+
+<MetaPackage>
+  <id>10028</id>
+  <description>Povray ray tracer v. 3.6</description>
+  <name>APPS/GRAPH/POVRAY-3.6</name>
+  <instance>20002</instance>
+  <instance>20011</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20002</id>
+  <url>https://sciencedata.dk/public/rtes/povray-3.6.tar.gz</url>
+  <basesystem>100</basesystem>
+</TarPackage>
+<ImagePackage>
+  <id>20011</id>
+  <url>https://sciencedata.dk/public/rtes/povray-3.6.img</url>
+  <basesystem>100</basesystem>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10038</id>
+  <description>Utilities for creating QEMU virtual machine RTEs</description>
+  <name>VM/QEMU_Utils</name>
+  <instance>20014</instance>
+  <instance>20018</instance>
+  <instance>20019</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20014</id>
+  <url>https://sciencedata.dk/public/rtes/qemu_utils_linux-1.0.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/KQEMU</depends>
+</TarPackage>
+<TarPackage>
+  <id>20018</id>
+  <url>https://sciencedata.dk/public/rtes/kvm_utils_linux-1.0.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/KVM_REDHAT</depends>
+</TarPackage>
+<TarPackage>
+  <id>20019</id>
+  <url>https://sciencedata.dk/public/rtes/kvm_utils_ubuntu-1.0.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/KVM_UBUNTU</depends>
+</TarPackage>
+<TarPackage>
+  <id>20015</id>
+  <url>https://sciencedata.dk/public/rtes/qemu_utils_windows-1.0.tar.gz</url>
+  <basesystem>101</basesystem>
+  <depends>VM/KQEMU</depends>
+  <label>TODO</label>
+</TarPackage>
+
+<MetaPackage>
+  <id>10039</id>
+  <description>ISO image with Scientific Linux 4 live system</description>
+  <name>VM/Linux/ScientificLinux-4_iso</name>
+  <instance>20016</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20016</id>
+  <url>https://sciencedata.dk/public/rtes/sl-4.iso</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10063</id>
+  <description>Disk image with CERN VM 2.1.0 customized for ATLAS</description>
+  <name>VM/Linux/cernvm_atlas_desktop-2.1.0_img</name>
+  <instance>20046</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20046</id>
+  <url>https://sciencedata.dk/public/rtes/cernvm-2.1.0-x86_64.hdd.gz</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10029</id>
+  <description>QEMU Virtual machine running Scientific Linux 4</description>
+  <name>VM/Linux/ScientificLinux-4-admin</name>
+  <instance>20004</instance>
+  <VirtualMachine>
+    <os>ScientificLinux-4</os>
+    <service>ssh</service>
+  </VirtualMachine>
+  <Requirements>
+    <privilege>administrator</privilege>
+  </Requirements>
+</MetaPackage>
+<TarPackage>
+  <id>20004</id>
+  <url>https://sciencedata.dk/public/rtes/qemu-0.9_sl4_windows_rte_admin.tar.gz</url>
+  <basesystem>101</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10070</id>
+  <description>VirtualBox image with CERN VM 2.1.0 live system customized for ATLAS</description>
+  <name>VM/Linux/cernvm-2.1.0-x86_64.vdi</name>
+  <instance>20053</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20053</id>
+  <url>https://sciencedata.dk/public/rtes/cernvm-2.1.0-x86_64.vdi.gz</url>
+  <depends>x86_64</depends>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10072</id>
+  <description>VirtualBox image with CERN VM 2.1.0 live system customized for ATLAS. Guest additions installed. AFS installed and started at boot</description>
+  <name>VM/Linux/cernvm_atlas-2.1.0-x86.vdi</name>
+  <instance>20057</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20057</id>
+  <url>https://sciencedata.dk/public/rtes/cernvm_atlas-2.1.0-x86.vdi.gz</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10062</id>
+  <description>CERN VM 2.1.0 customized for ATLAS</description>
+  <name>VM/Linux/CERNVM-2.1.0</name>
+  <provides>Linux</provides>
+  <instance>20045</instance>
+  <VirtualMachine>
+    <os>CernVM-2.1.0</os>
+    <service>ssh</service>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20045</id>
+  <url>https://sciencedata.dk/public/rtes/qemu_cernvm-2.1.0.tar.gz</url>
+  <depends>VM/QEMU_Utils</depends>
+  <depends>VM/Linux/cernvm_atlas_desktop-2.1.0_img</depends>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10073</id>
+  <description>VirtualBox image with CentOS-5</description>
+  <name>VM/Linux/CentOS-5_vdi</name>
+  <instance>20058</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20058</id>
+  <url>https://sciencedata.dk/public/rtes/CentOS-5-i386-Server.vdi.gz</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10075</id>
+  <description>VirtualBox image with CentOS-5 and Root and Proof on Demand preinstalled</description>
+  <name>VM/Linux/CentOS-5_proof_worker_vdi</name>
+  <instance>20059</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20059</id>
+  <url>https://sciencedata.dk/public/rtes/CentOS-5-i386-Server-proof_worker.vdi.gz</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10056</id>
+  <description>VirtualBox VM image with Debian Sarge</description>
+  <name>VM/Linux/debian_sarge_vdi</name>
+  <instance>20036</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20036</id>
+  <url>https://sciencedata.dk/public/rtes/debian_sarge.vdi.gz</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10057</id>
+  <description>QEMU VM image with Debian Sarge</description>
+  <name>VM/Linux/debian_sarge_img</name>
+  <instance>20037</instance>
+</MetaPackage>
+<ImagePackage>
+  <id>20037</id>
+  <url>https://sciencedata.dk/public/rtes/debian_sarge.img.gz</url>
+</ImagePackage>
+
+<MetaPackage>
+  <id>10071</id>
+  <description>VirtualBox VM running 32 bit CERN VM 2.1.0 Linux customized for ATLAS. Guest additions installed. AFS installed and started at boot.</description>
+  <name>VM/Linux/cernvm_atlas-2.1.0-x86</name>
+  <provides>VM/Linux/CERNVM-2.1.0</provides>
+  <provides>SYSTEM/AFS</provides>
+  <provides>SYSTEM/CVMFS</provides>
+    <instance>20054</instance>
+  <instance>20055</instance>
+  <instance>20056</instance>
+    <VirtualMachine>
+    <os>CernVM-2.1.0</os>
+    <service>ssh</service>
+    <sfmount>mount -t vboxsf gridfactory</sfmount>
+    <privilege>administrator</privilege>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20054</id>
+  <url>https://sciencedata.dk/public/rtes/vb_cernvm_atlas-2.1.0-x86.tar.gz</url>
+  <depends>VM/Linux/cernvm_atlas-2.1.0-x86.vdi</depends>
+  <depends>VM/VirtualBox</depends>
+  <basesystem>100</basesystem>
+</TarPackage>
+<TarPackage>
+  <id>20055</id>
+  <url>https://sciencedata.dk/public/rtes/vb_windows_cernvm_atlas-2.1.0-x86.tar.gz</url>
+  <depends>VM/Linux/cernvm_atlas-2.1.0-x86.vdi</depends>
+  <depends>VM/VirtualBox</depends>
+  <basesystem>101</basesystem>
+</TarPackage>
+<TarPackage>
+  <id>20056</id>
+  <url>https://sciencedata.dk/public/rtes/vb_macosx_cernvm_atlas-2.1.0-x86.tar.gz</url>
+  <depends>VM/Linux/cernvm_atlas-2.1.0-x86.vdi</depends>
+  <depends>VM/VirtualBox</depends>
+  <basesystem>103</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10035</id>
+  <description>Virtual machine running Debian Sarge</description>
+  <name>VM/Linux/DebianSarge</name>
+  <instance>20010</instance>
+  <instance>20052</instance>
+  <VirtualMachine>
+    <os>Debian-3.1</os>
+    <service>ssh</service>
+    <privilege>administrator</privilege>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20010</id>
+  <url>https://sciencedata.dk/public/rtes/qemu-0.9_sarge_windows_rte.tar.gz</url>
+  <basesystem>101</basesystem>
+  <depends>VM/Linux/debian_sarge_img</depends>
+  <depends>VM/KQEMU</depends>
+</TarPackage>
+<TarPackage>
+  <id>20052</id>
+  <url>https://sciencedata.dk/public/rtes/qemu_debian_sarge.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/QEMU_Utils</depends>
+  <depends>VM/Linux/debian_sarge_img</depends>
+</TarPackage>
+<MetaPackage>
+  <id>10037</id>
+  <description>Virtual machine running Debian Sarge</description>
+  <name>VM/Linux/Debian-3.1</name>
+  <provides>VM/Linux/DebianSarge</provides>
+  <instance>20035</instance>
+  <instance>20040</instance>
+  <VirtualMachine>
+    <os>Debian-3.1</os>
+    <service>ssh</service>
+    <privilege>administrator</privilege>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20035</id>
+  <url>https://sciencedata.dk/public/rtes/vb_debian_sarge.tar.gz</url>
+  <depends>VM/Linux/debian_sarge_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+  <basesystem>100</basesystem>
+</TarPackage>
+<TarPackage>
+  <id>20040</id>
+  <url>https://sciencedata.dk/public/rtes/vb_macosx_debian_sarge.tar.gz</url>
+  <depends>VM/Linux/debian_sarge_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+  <basesystem>103</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10034</id>
+  <description>QEMU Virtual machine running Scientific Linux 4</description>
+  <name>VM/Linux/ScientificLinux-4</name>
+  <instance>20008</instance>
+  <instance>20009</instance>
+  <VirtualMachine>
+    <os>ScientificLinux-4</os>
+    <service>ssh</service>
+  </VirtualMachine>
+</MetaPackage>
+
+<TarPackage>
+  <id>20008</id>
+  <url>https://sciencedata.dk/public/rtes/qemu-0.9_sl4_rte.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/KQEMU</depends>
+</TarPackage>
+<TarPackage>
+  <id>20009</id>
+  <url>https://sciencedata.dk/public/rtes/qemu-0.9_sl4_windows_rte.tar.gz</url>
+  <basesystem>101</basesystem>
+  <depends>VM/KQEMU</depends>
+</TarPackage>
+
+<MetaPackage>
+  <id>10036</id>
+  <description>QEMU Virtual machine running Scientific Linux 4 with root login</description>
+  <name>VM/Linux/ScientificLinux-4-root_login</name>
+  <instance>20012</instance>
+  <VirtualMachine>
+    <os>ScientificLinux-4</os>
+    <service>ssh</service>
+    <privilege>administrator</privilege>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20012</id>
+  <url>https://sciencedata.dk/public/rtes/qemu-0.9_sl4_rte_root.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/Linux/ScientificLinux-4</depends>
+</TarPackage>
+
+<MetaPackage>
+  <id>10030</id>
+  <description>VirtualBox Virtual machine running CentOS 5</description>
+  <name>VM/Linux/CentOS-5</name>
+  <provides>UTIL/YUM</provides>
+  <provides>UTIL/Perl-5</provides>
+  <instance>20005</instance>
+  <instance>20006</instance>
+  <instance>20029</instance>
+  <VirtualMachine>
+    <os>CentOS-5</os>
+    <service>ssh</service>
+    <sfmount>mount -t vboxsf gridfactory</sfmount>
+    <privilege>administrator</privilege>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20005</id>
+  <url>https://sciencedata.dk/public/rtes/vb_centos5.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/Linux/CentOS-5_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+</TarPackage>
+<TarPackage>
+  <id>20029</id>
+  <url>https://sciencedata.dk/public/rtes/vb_macosx_centos5.tar.gz</url>
+  <basesystem>103</basesystem>
+  <depends>VM/Linux/CentOS-5_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+</TarPackage>
+<TarPackage>
+  <id>20006</id>
+  <url>https://sciencedata.dk/public/rtes/vb_windows_centos5.tar.gz</url>
+  <basesystem>101</basesystem>
+  <depends>VM/Linux/CentOS-5_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+</TarPackage>
+
+<MetaPackage>
+  <id>10076</id>
+  <description>VirtualBox Virtual machine running CentOS 5 with Root and Proof on Demand preinstalled</description>
+  <name>VM/Linux/CentOS-5_proof_worker</name>
+  <provides>UTIL/YUM</provides>
+  <provides>UTIL/Perl-5</provides>
+  <provides>APPS/HEP/Root-5.27</provides>
+  <instance>20060</instance>
+  <instance>20061</instance>
+  <instance>20062</instance>
+  <VirtualMachine>
+    <os>CentOS-5</os>
+    <service>ssh</service>
+    <sfmount>mount -t vboxsf gridfactory</sfmount>
+  </VirtualMachine>
+</MetaPackage>
+<TarPackage>
+  <id>20060</id>
+  <url>https://sciencedata.dk/public/rtes/vb_centos5_proof_worker.tar.gz</url>
+  <basesystem>100</basesystem>
+  <depends>VM/Linux/CentOS-5_proof_worker_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+</TarPackage>
+<TarPackage>
+  <id>20061</id>
+  <url>https://sciencedata.dk/public/rtes/vb_macosx_centos5_proof_worker.tar.gz</url>
+  <basesystem>103</basesystem>
+  <depends>VM/Linux/CentOS-5_proof_worker_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+</TarPackage>
+<TarPackage>
+  <id>20062</id>
+  <url>https://sciencedata.dk/public/rtes/vb_windows_centos5_proof_worker.tar.gz</url>
+  <basesystem>101</basesystem>
+  <depends>VM/Linux/CentOS-5_proof_worker_vdi</depends>
+  <depends>VM/VirtualBox</depends>
+</TarPackage>
+
+<MetaPackage>
+  <id>10046</id>
+  <description>flac and lame - installed from RPMs downloaded on the fly from public repositories</description>
+  <name>UTIL/SoundUtils-1.0</name>
+  <instance>20026</instance>
+  <Requirements>
+    <privilege>administrator</privilege>
+  </Requirements>
+</MetaPackage>
+
+<TarPackage>
+  <id>20026</id>
+  <url>https://sciencedata.dk/public/rtes/sound_utils-1.0.tar.gz</url>
+  <basesystem>102</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10079</id>
+  <description>vlc and ffmpeg</description>
+  <name>UTIL/MpegUtils-1.0</name>
+  <instance>20063</instance>
+  <instance>20064</instance>
+  <Requirements>
+    <privilege>administrator</privilege>
+  </Requirements>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10086</id>
+  <description>vlc and ffmpeg</description>
+  <name>UTIL/MpegUtilsCuda-1.0</name>
+  <instance>20065</instance>
+  <Requirements>
+    <privilege>administrator</privilege>
+  </Requirements>
+</MetaPackage>
+
+<TarPackage>
+  <id>20063</id>
+  <url>https://sciencedata.dk/public/rtes/mpeg_utils-1.0.tar.gz</url>
+  <basesystem>102</basesystem>
+</TarPackage>
+
+<TarPackage>
+  <id>20064</id>
+  <url>https://sciencedata.dk/public/rtes/mpeg_utils_ubuntu-1.0.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<TarPackage>
+  <id>20065</id>
+  <url>https://sciencedata.dk/public/rtes/mpeg_utils_ubuntu_cuda-1.0.tar.gz</url>
+  <basesystem>106</basesystem>
+  <depends>SYSTEM/CUDA</depends>
+</TarPackage>
+
+<MetaPackage>
+  <id>10049</id>
+  <description>Value at risk calculation for a simple portfolio</description>
+  <name>FINANCE/VaR-1.0</name>
+  <instance>20028</instance>
+</MetaPackage>
+
+<TarPackage>
+  <id>20028</id>
+  <url>https://sciencedata.dk/public/rtes/var-1.0.tar.gz</url>
+  <depends>UTIL/GnuPlot-4.0</depends>
+  <depends>UTIL/Perl</depends>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10048</id>
+  <description>gnuplot - installed from RPM downloaded on the fly from public repository</description>
+  <name>UTIL/GnuPlot-4.0</name>
+  <instance>20027</instance>
+  <Requirements>
+    <privilege>administrator</privilege>
+  </Requirements>
+</MetaPackage>
+
+<TarPackage>
+  <id>20027</id>
+  <url>https://sciencedata.dk/public/rtes/gnuplot-4.0.tar.gz</url>
+  <basesystem>102</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10050</id>
+  <description>Any version of Perl</description>
+  <name>UTIL/Perl</name>
+  <command>perl -v</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10051</id>
+  <description>Any version of Perl</description>
+  <name>UTIL/Perl-5</name>
+  <command>perl -v | grep v5</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10052</id>
+  <description>Package utility for RPM</description>
+  <name>UTIL/YUM</name>
+  <command>which yum</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10087</id>
+  <description>XZ compression utility</description>
+  <name>UTIL/XZ</name>
+  <command>which xz</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10088</id>
+  <description>OpenSSL secure communications utility</description>
+  <name>UTIL/OpenSSL</name>
+  <command>which openssl</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10089</id>
+  <description>SSL signing of PDF files</description>
+  <name>UTIL/PDFSign</name>
+  <instance>20047</instance>
+</MetaPackage>
+
+<TarPackage>
+  <id>20047</id>
+  <url>https://sciencedata.dk/public/rtes/pdfsign-1.0.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10090</id>
+  <description>OpenAI Whisper - transcription of recordings</description>
+  <name>UTIL/Whisper</name>
+  <command>ls /root/bin/whisper</command>
+</MetaPackage>
+
+<MetaPackage>
+  <id>10091</id>
+  <description>Whisper utility</description>
+  <name>UTIL/WhisperUtil</name>
+  <instance>20048</instance>
+</MetaPackage>
+
+<TarPackage>
+  <id>20048</id>
+  <url>https://sciencedata.dk/public/rtes/whisper_util-1.0.tar.gz</url>
+  <depends>UTIL/Whisper</depends>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10049</id>
+  <description>Value at risk calculation for a simple financial portfolio</description>
+  <name>FINANCE/VaR-1.0</name>
+  <instance>20028</instance>
+</MetaPackage>
+
+<TarPackage>
+  <id>20028</id>
+  <url>https://sciencedata.dk/public/rtes/var-1.0.tar.gz</url>
+  <depends>UTIL/GnuPlot-4.0</depends>
+  <depends>UTIL/Perl</depends>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10078</id>
+  <name>APPS/BIO/BLAST</name>
+  <instance>10077</instance>
+</MetaPackage>
+<TarPackage>
+  <id>10077</id>
+  <url>https://sciencedata.dk/public/rtes/blast-2.2.22.tar.gz</url>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10080</id>
+  <name>APPS/HEP/PYTHIA-6.4.25</name>
+  <description>Fortran version of PYTHIA, including an example of analysis of simulated data with ROOT.</description>
+  <instance>10081</instance>
+</MetaPackage>
+<TarPackage>
+  <id>10081</id>
+  <url>https://sciencedata.dk/public/rtes/pythia-6.4.25.tar.gz</url>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10082</id>
+  <name>APPS/HEP/ROOT-5.28.00</name>
+  <instance>10083</instance>
+</MetaPackage>
+<TarPackage>
+  <id>10083</id>
+  <url>https://sciencedata.dk/public/rtes/root-5.28.00.tar.gz</url>
+  <depends>SYSTEM/CVMFS</depends>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10084</id>
+  <name>APPS/HEP/NNPDF</name>
+  <instance>10085</instance>
+</MetaPackage>
+<TarPackage>
+  <id>10085</id>
+  <url>https://sciencedata.dk/public/rtes/nnpdf.tar.gz</url>
+  <basesystem>100</basesystem>
+</TarPackage>
+
+</RTECatalog>

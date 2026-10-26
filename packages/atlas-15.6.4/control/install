@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# This fixes what seems to be a bug in CernVM-1.4
+if [ ! -e /mnt/atlas2/shadow/software ]; then
+  mkdir -p /mnt/atlas2/shadow
+  ln -s /mnt/cvmfs/software /mnt/atlas2/shadow/software
+fi
+

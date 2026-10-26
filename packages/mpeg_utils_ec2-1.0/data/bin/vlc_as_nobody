@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Run vlc as nobody. This is to be used when logged in as root.
+
+start_dir=`pwd`
+dirname=`pwd | sed -r 's|.*/([^/]*)$|\1|'`
+run_dir=/tmp/vclrun/$dirname
+
+chown nobody:nobody /usr/bin/vlc
+chmod +s /usr/bin/vlc
+if [ ! -L ~/.cache/vlc ]; then
+  rm -rf ~/.cache/vlc
+  mkdir ~/.cache
+  mkdir /tmp/vlccache
+  chown nobody:nobody /tmp/vlccache
+  ln -s /tmp/vlccache ~/.cache/vlc
+fi
+if [ ! -L ~/.local/share/vlc ]; then
+  rm -rf ~/.local/share/vlc
+  mkdir -p ~/.local/share
+  mkdir /tmp/vlcshare
+  chown nobody:nobody /tmp/vlcshare
+  ln -s /tmp/vlcshare ~/.local/share/vlc
+fi
+
+rm -rf $run_dir
+mkdir -p $run_dir
+cp -r $start_dir/* $run_dir/
+chown -R nobody:nobody $run_dir
+cd $run_dir
+
+vlc "$@"
+ret=$?
+
+cp -r $run_dir/* $start_dir/
+rm -rf $run_dir
+
+cd $start_dir
+
+chown root:root /usr/bin/vlc
+chmod -s /usr/bin/vlc
+
+exit $?

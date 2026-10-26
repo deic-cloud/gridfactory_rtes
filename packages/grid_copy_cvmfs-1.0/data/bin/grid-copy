@@ -1,0 +1,77 @@
+#!/bin/bash
+
+src=$1
+dst=$2
+
+if [ "$src" == "" -o "$dst" == "" ]; then
+  echo "Usage: grid-copy src dst" 1>&2
+  exit -1
+fi
+
+# Check for x509up_* in current dir
+
+PROXY_FILE=`ls x509up_*`
+if [ $? -eq 0 ]; then
+  export X509_USER_PROXY=`pwd`/$PROXY_FILE
+  chmod go-rwx $X509_USER_PROXY
+fi
+
+src_guid=`echo $src | sed -r 's|.*guid=(.*)|\1|'`
+src_name=`echo $src | sed -r 's|.*lfn=(.*)|\1|'`
+dst_guid=`echo $dst | sed -r 's|.*guid=(.*)|\1|'`
+dst_name=`echo $dst | sed -r 's|.*lfn=(.*)|\1|'`
+
+src_protocol=`echo $src | sed -r 's|^([a-z]*):.*|\1|'`
+dst_protocol=`echo $dst | sed -r 's|^([a-z]*):.*|\1|'`
+
+cp_cmd="lcg-cp"
+if [ "$src_protocol" == "gsiftp" -o "$dst_protocol" == "gsiftp" ]; then
+  cp_cmd="globus-url-copy"
+fi
+
+if [ "$src_protocol" != "$src" -a "$src_protocol" != "file" -a "$dst_protocol" != "$dst" -a "$dst_protocol" != "file" ]; then
+  echo "Third-party copying not supported $src_protocol $dst_protocol" 1>&2
+  exit -1
+fi
+
+if [ "$src_guid" != "$src" ]; then
+  lfcHost=`echo $src | sed -r 's|lfc:/*([^:^/]*)[:/].*|\1|'`
+  export LFC_HOST=$lfcHost
+  dst=`echo $dst | sed -r 's|^file:||'`
+  dst=`echo $dst | sed -r "s|^([^/])|$PWD/\1|"`
+  dst=`echo $dst | sed -r 's|//|/|g' | sed 's|//|/|g'`
+  $cp_cmd guid:$src_guid "file://$dst"
+elif [ "$src_name" != "$src" ]; then
+  lfcHost=`echo $src | sed -r 's|lfc:/*([^:^/]*)[:/].*|\1|'`
+  export LFC_HOST=$lfcHost
+  dst=`echo $dst | sed -r 's|^file:||'`
+  dst=`echo $dst | sed -r "s|^([^/])|$PWD/\1|"`
+  dst=`echo $dst | sed -r 's|//|/|g' | sed 's|//|/|g'`
+  $cp_cmd lfn:$src_name "file://$dst"
+elif [ "$dst_name" != "$dst" ]; then
+  lfcHost=`echo $dst | sed -r 's|lfc:/*([^:^/]*)[:/].*|\1|'`
+  export LFC_HOST=$lfcHost
+  src=`echo $src | sed -r 's|^file:||'`
+  src=`echo $src | sed -r "s|^([^/])|$PWD/\1|"`
+  src=`echo $src | sed -r 's|//|/|g' | sed 's|//|/|g'`
+  $cp_cmd file://$src lfn:$dst_name
+elif [ "$dst_guid" != "$dst" ]; then
+  lfcHost=`echo $dst | sed -r 's|lfc:/*([^:^/]*)[:/].*|\1|'`
+  export LFC_HOST=$lfcHost
+  src=`echo $src | sed -r 's|^file:||'`
+  src=`echo $src | sed -r "s|^([^/])|$PWD/\1|"`
+  src=`echo $src | sed -r 's|//|/|g' | sed 's|//|/|g'`
+  $cp_cmd "file://$src" lfn:$dst_guid
+elif [ "$src_protocol" != "$src" -a  "$src_protocol" != "file" ]; then
+  dst=`echo $dst | sed -r 's|^file:||'`
+  dst=`echo $dst | sed -r "s|^([^/])|$PWD/\1|"`
+  dst=`echo $dst | sed -r 's|//|/|g' | sed 's|//|/|g'`
+  $cp_cmd "$src" "file://$dst"
+elif [ "$dst_protocol" != "$dst" -a  "$dst_protocol" != "file" ]; then
+  src=`echo $src | sed -r 's|^file:||'`
+  src=`echo $src | sed -r "s|^([^/])|$PWD/\1|"`
+  src=`echo $src | sed -r 's|//|/|g' | sed 's|//|/|g'`
+  $cp_cmd "file://$src" "$dst"
+else
+  echo "cannot copy $src to $dst"
+fi

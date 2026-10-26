@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# This is CentOS-5, just use yum to remove gnuplot
+yum -y remove gnuplot

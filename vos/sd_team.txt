@@ -1,0 +1,3 @@
+O=sciencedata,CN=fror@dtu.dk
+O=sciencedata,CN=marbec@dtu.dk
+O=sciencedata,CN=morkg@dtu.dk

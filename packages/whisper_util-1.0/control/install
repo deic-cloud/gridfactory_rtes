@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Check for manually installed CUDA-enabled ffmpeg
+if [ -e /root/ffmpeg ]; then
+	# Make ffmpeg available to the gridfactory user
+	cp -r /root/ffmpeg /home/gridfactory/
+	chown -R gridfactory:gridfactory /home/gridfactory/ffmpeg
+fi
+

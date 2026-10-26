@@ -1,0 +1,5 @@
+#!/bin/sh
+
+AWS=%BASEDIR%/bin/aws
+sed -i 's|BASEDIR|%BASEDIR%|' $AWS
+chmod +x $AWS

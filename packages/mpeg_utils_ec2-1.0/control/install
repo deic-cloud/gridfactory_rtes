@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# This is a helper app - in case we're running as root - vlc refuses to run as root
+chmod +x %BASEDIR%/bin/vlc_as_nobody
+
+# Use yum or apt-get to install vlc and ffmpeg
+yum --help >& /dev/null
+if [ $? -eq 0 ]; then
+  yum update
+  yum -y install vlc ffmpeg alsa-lib
+else
+  sudo apt-get update
+  sudo apt-get -y install vlc ffmpeg
+fi

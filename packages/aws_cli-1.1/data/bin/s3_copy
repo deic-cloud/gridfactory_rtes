@@ -1,0 +1,20 @@
+#!/bin/bash
+
+export AWS_ACCESS_KEY_ID
+export AWS_SECRET_ACCESS_KEY
+
+src0=$1
+dst0=$2
+src1=`echo $src0 | sed -r 's|^sss:||' | sed -r 's|^s3:||' | sed -r 's|//*|/|'`
+dst1=`echo $dst0 | sed -r 's|^sss:||' | sed -r 's|^s3:||' | sed -r 's|//*|/|'`
+
+if [ "$src0" != "$src1" -a "$dst0" == "$dst1" ]; then
+  dst1=`echo $dst1 | sed -r 's|^file:||' | sed -r 's|//*|/|'`
+  aws get $src1 $dst1
+elif [ "$src0" == "$src1" -a "$dst0" != "$dst1" ]; then
+  src1=`echo $src1 | sed -r 's|^file:||' | sed -r 's|//*|/|'`
+  aws put $dst1 $src1
+else
+  echo "Can only get or put objects to or from S3." 1>&2
+  exit -1
+fi

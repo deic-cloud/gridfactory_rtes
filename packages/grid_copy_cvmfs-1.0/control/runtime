@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case "$1" in
+	0)
+		#none
+	;;
+
+	1)
+                #source /afs/cern.ch/project/gd/LCG-share/current/etc/profile.d/grid_env.sh
+                if [ "`uname -p`" == "x86_64" -o "`uname -m`" == "x86_64" ]; then
+                  source /opt/grid/default/etc/profile.d/grid-env.sh
+                else
+                  source /opt/grid/default/etc/profile.d/grid-env.sh
+                fi
+		export LCG_CATALOG_TYPE=lfc
+		PATH="%BASEDIR%/bin:$PATH"
+                export PATH
+	;;
+
+	2)
+		#none
+	;;
+
+	*)
+		return 1
+	;;
+esac	
+
+# eof

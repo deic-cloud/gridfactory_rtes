@@ -1,0 +1,14 @@
+#!/bin/bash
+
+src=$1
+dst=`echo $2 | sed -r 's|^file:||' | sed -r 's|//*|/|'`
+
+curl --help >& /dev/null
+if [ $? -eq 0 ]; then
+  curl --silent --show-error --insecure -o $dst $src
+else
+  wget -O $dst $src
+  if [ $? -ne 0 ]; then
+    wget --quiet --no-check-certificate -O $dst $src
+  fi
+fi

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+BIN_DIR="bin"
+EXECUTABLE="VaR.linux"
+
+chmod +x "$BIN_DIR/$EXECUTABLE"

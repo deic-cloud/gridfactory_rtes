@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# this file is sourced with argument "0" just before the job submission script
+# is written. The job submission script sources it with "1" just before job
+# execution and with "2" after job termination.
+
+case "$1" in
+ 0)
+   #none
+ ;;
+
+ 1)
+   # Initialize the ATLAS environment
+   source /opt/atlas/software/i686_slc5_gcc43_opt/setupScripts/setupAtlasProduction_15.6.9.8.sh -force
+ ;;
+
+ 2)
+   #none
+ ;;
+
+ *)
+   return 1
+ ;;
+esac 
+
+# eof

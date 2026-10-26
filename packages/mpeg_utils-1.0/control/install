@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# This is a Redhat-like system, just use yum and rpm to install vlc
+rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+rpm -i rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+yum -y update
+yum -y install vlc ffmpeg alsa-lib
+chmod +x %BASEDIR%/bin/vlc_as_nobody

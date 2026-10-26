@@ -1,0 +1,25 @@
+#!/bin/sh
+
+
+BIN_DIR="bin"
+
+case "$1" in
+	0)
+		#none
+	;;
+
+	1)
+		PATH="%BASEDIR%/$BIN_DIR:$PATH"
+		export PATH
+	;;
+
+	2)
+		#none
+	;;
+
+	*)
+		return 1
+	;;
+esac	
+
+# eof
