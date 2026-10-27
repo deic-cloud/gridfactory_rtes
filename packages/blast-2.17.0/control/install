@@ -1,0 +1,13 @@
+#!/bin/bash
+# NCBI BLAST+ 2.17.0 (public domain): the release tarball, fetched at install
+# time and checked against a pinned SHA-256 (NCBI's MD5 also verified when
+# fetching it for this package). Runs once per worker, in the package directory.
+set -e
+cd "%BASEDIR%"
+URL=https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.17.0/ncbi-blast-2.17.0+-x64-linux.tar.gz
+SHA256=3888112d8207831aa47371d93583c601f058f88b5db22dc782438b039a3a411b
+curl -sSfL --max-time 1800 -o blast.tar.gz "$URL"
+echo "$SHA256  blast.tar.gz" | sha256sum -c --quiet
+tar xzf blast.tar.gz
+rm -f blast.tar.gz
+chmod -R a+rX ncbi-blast-2.17.0+

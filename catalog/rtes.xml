@@ -837,4 +837,64 @@
   <basesystem>106</basesystem>
 </TarPackage>
 
+<MetaPackage>
+  <id>10094</id>
+  <description>minimap2 2.31 - fast alignment of sequencing reads to a reference genome</description>
+  <name>APPS/BIO/minimap2-2.31</name>
+  <instance>20068</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20068</id>
+  <url>https://sciencedata.dk/public/rtes/minimap2-2.31.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10095</id>
+  <description>NCBI BLAST+ 2.17.0 - sequence similarity search</description>
+  <name>APPS/BIO/BLAST-2.17.0</name>
+  <instance>20069</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20069</id>
+  <url>https://sciencedata.dk/public/rtes/blast-2.17.0.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10096</id>
+  <description>Open Babel 3.1 - chemical file formats, 3D structure generation (Ubuntu package)</description>
+  <name>APPS/CHEM/OpenBabel-3.1</name>
+  <instance>20070</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20070</id>
+  <url>https://sciencedata.dk/public/rtes/openbabel-3.1.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10097</id>
+  <description>AutoDock Vina 1.2.7 with meeko - molecular docking</description>
+  <name>APPS/CHEM/Vina-1.2.7</name>
+  <instance>20071</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20071</id>
+  <url>https://sciencedata.dk/public/rtes/vina-1.2.7.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
+<MetaPackage>
+  <id>10098</id>
+  <description>CDO - Climate Data Operators for NetCDF/GRIB (Ubuntu package)</description>
+  <name>APPS/CLIMATE/CDO-2.0</name>
+  <instance>20072</instance>
+</MetaPackage>
+<TarPackage>
+  <id>20072</id>
+  <url>https://sciencedata.dk/public/rtes/cdo-2.0.tar.gz</url>
+  <basesystem>106</basesystem>
+</TarPackage>
+
 </RTECatalog>

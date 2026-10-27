@@ -1,0 +1,6 @@
+#!/bin/sh
+# Installed system-wide by control/install (in /usr/bin); nothing to set.
+case "$1" in
+	0|1|2) ;;
+	*) return 1 ;;
+esac

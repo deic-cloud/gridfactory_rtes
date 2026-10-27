@@ -1,0 +1,23 @@
+#!/bin/bash
+# AutoDock Vina 1.2.7 (Scripps Research, Apache 2.0): the static release binary,
+# checked against a pinned SHA-256; plus meeko 0.8.0 (ligand preparation, LGPL)
+# with RDKit in a Python venv - pip bootstrapped from a pinned, SHA-256-checked
+# wheel (worker images need not have pip). Runs once per worker, in the package dir.
+set -e
+cd "%BASEDIR%"
+VINA_URL=https://github.com/ccsb-scripps/AutoDock-Vina/releases/download/v1.2.7/vina_1.2.7_linux_x86_64
+VINA_SHA256=f31f774f723bba7bbe6e9d1c47577020eea9a8da16424284c043d22593570644
+curl -sSfL --max-time 600 -o bin/vina "$VINA_URL"
+echo "$VINA_SHA256  bin/vina" | sha256sum -c --quiet
+PIP_WHL=pip-26.2.2-py3-none-any.whl
+PIP_URL=https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/$PIP_WHL
+PIP_SHA256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70
+curl -sSfL --max-time 600 -o "$PIP_WHL" "$PIP_URL"
+echo "$PIP_SHA256  $PIP_WHL" | sha256sum -c --quiet
+python3 -m venv --without-pip venv
+venv/bin/python "$PIP_WHL/pip" install --quiet --no-cache-dir "$PIP_WHL"
+rm -f "$PIP_WHL"
+# meeko 0.8.0 declares no dependencies; it needs rdkit, gemmi, scipy, numpy.
+venv/bin/pip install --quiet --no-cache-dir "meeko==0.8.0" "rdkit==2026.9.1" "gemmi==0.7.5" scipy numpy
+chmod 755 bin/vina bin/vina_dock
+chmod -R a+rX venv bin

@@ -1,0 +1,12 @@
+#!/bin/bash
+# minimap2 2.31 (Heng Li, MIT): the release binary, fetched at install time and
+# checked against a pinned SHA-256. Runs once per worker, in the package directory.
+set -e
+cd "%BASEDIR%"
+URL=https://github.com/lh3/minimap2/releases/download/v2.31/minimap2-2.31_x64-linux.tar.bz2
+SHA256=300bc287f05eb890c6211fa7db043ce98320a401621fadd1cfdbeabd1a6e4ab5
+curl -sSfL --max-time 600 -o minimap2.tar.bz2 "$URL"
+echo "$SHA256  minimap2.tar.bz2" | sha256sum -c --quiet
+tar xjf minimap2.tar.bz2
+rm -f minimap2.tar.bz2
+chmod -R a+rX minimap2-2.31_x64-linux

@@ -1,0 +1,15 @@
+#!/bin/bash
+# vina_dock ligand receptor.pdbqt vina_box.txt out.pdbqt scores.txt
+# Docks one ligand (.pdbqt, or .sdf/.mol prepared here with meeko) into the
+# receptor within the box, with AutoDock Vina; writes the poses and a score table.
+set -e
+here=$(dirname "$(readlink -f "$0")")
+ligand=$1; receptor=$2; box=$3; out=$4; scores=$5
+case "${ligand,,}" in
+	*.pdbqt) lig=$ligand ;;
+	*) lig=ligand_prepared.pdbqt
+	   "$here/../venv/bin/python" "$here/../venv/bin/mk_prepare_ligand.py" -i "$ligand" -o "$lig" >/dev/null ;;
+esac
+"$here/vina" --receptor "$receptor" --ligand "$lig" --config "$box" \
+	--exhaustiveness "${EXHAUSTIVENESS:-8}" --cpu "$(nproc)" --out "$out" > vina.log
+{ echo "AutoDock Vina 1.2.7 - $(basename "$ligand") docked into $(basename "$receptor")"; echo; sed -n '/^mode |/,$p' vina.log; } > "$scores"
